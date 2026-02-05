@@ -7,9 +7,9 @@ import plotly.express as px
 # -----------------------------
 # Step 1: Load your data
 # -----------------------------
-observations = pd.read_csv("observations.csv")  # Historical data
-events = pd.read_csv("events.csv")              # Event-impact data
-forecasts = pd.read_csv("forecasts.csv")        # Forecasted values from Task 4
+observations = pd.read_csv(r"C:\Users\bezis\Downloads\ethiopia-fi-forecast\dashboard\observations.csv")  # Historical data
+events = pd.read_csv(r"C:\Users\bezis\Downloads\ethiopia-fi-forecast\dashboard\events.csv")              # Event-impact data
+forecasts = pd.read_csv(r"C:\Users\bezis\Downloads\ethiopia-fi-forecast\dashboard\forecasts.csv")        # Forecasted values from Task 4
 
 # -----------------------------
 # Step 2: Sidebar navigation
