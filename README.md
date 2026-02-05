@@ -1,106 +1,170 @@
-# Ethiopia Financial Inclusion Forecast – Task 2: Exploratory Data Analysis
+# Ethiopia Financial Inclusion Project
 
-## Overview
-This notebook analyzes financial inclusion in Ethiopia using the `ethiopia_fi_unified_data` dataset. The goal is to identify patterns, trends, and factors affecting access and usage of financial services, and to provide insights for forecasting models.
-
-### Dataset Summary
-| Record Type     | Count | Description |
-|-----------------|-------|-------------|
-| observation     | 30    | Measured values from surveys, reports, operators |
-| event           | 10    | Policies, product launches, market entries, milestones |
-| impact_link     | 14    | Modeled relationships between events and indicators |
-| target          | 3     | Official policy goals (e.g., NFIS-II targets) |
-
-**Pillars Covered**
-- ACCESS: 16 records  
-- USAGE: 11 records  
-- GENDER: 5 records  
-- AFFORDABILITY: 1 record  
-
-**Source Types**
-- Operator: 15  
-- Survey: 10  
-- Regulator: 7  
-- Research: 4  
-- Policy: 3  
-- Calculated: 2  
-- News: 2  
-
-**Observation Date Range:** 2014–2025  
-
-**Indicators:** 19 unique codes including account ownership, mobile money usage, 4G coverage, ATM counts, gender gap measures, and digital payment volumes.
+This repository contains a comprehensive analysis and forecasting of financial inclusion in Ethiopia. It includes historical data exploration, event impact modeling, forecasting, and an interactive dashboard for stakeholders.
 
 ---
 
-## Key Analyses
+## **Project Overview**
 
-### 1. Access Analysis
-- **Account Ownership Trend (2011–2024):**  
-  Growth slowed post-2021, only +3pp despite massive mobile money expansion.
-- **Gender Gap:**  
-  Persistent gap between male and female account ownership.
-- **Urban vs. Rural:**  
-  Rural access remains lower due to limited infrastructure.
-
-### 2. Usage Analysis
-- **Mobile Money Penetration:**  
-  Rapid growth in digital payments post-Telebirr (May 2021) and M-Pesa entry (Aug 2023).  
-- **Payment Patterns:**  
-  P2P payments dominate, while merchant/bill payments are less common.  
-- **Registered vs Active Accounts:**  
-  Significant gap, indicating many registered users are inactive.
-
-### 3. Infrastructure & Enablers
-- 4G coverage, mobile penetration, and ATM density positively correlate with account ownership and usage.  
-- Infrastructure improvements precede inclusion growth, often with a 6–12 month lag.
-
-### 4. Event Timeline Analysis
-- Telebirr launch (May 2021) → Increase in account ownership  
-- M-Pesa entry (Aug 2023) → Surge in mobile money usage  
-- Safaricom market entry (Aug 2022) → Boost in 4G coverage and digital payments
-
-### 5. Correlation Insights
-- **Access** is strongly associated with infrastructure (4G coverage, mobile penetration).  
-- **Usage** is associated with policy events and mobile money platform entries.  
-- Impact_links suggest that events like Telebirr and M-Pesa drive indicator improvements over time.
+The project is structured into **five main tasks**:
 
 ---
 
-## Data Quality Assessment
-- Confidence levels: 40 high, 3 medium  
-- Sparse coverage for some indicators (e.g., AFF_DATA_INCOME, GEN_MM_SHARE)  
-- Missing disaggregations for rural vs urban in some years  
-- Gaps limit modeling for certain demographic or geographic subgroups
+### **Task 1: Data Exploration and Enrichment**
+**Objective:** Understand the starter dataset and enrich it with additional data useful for forecasting.
+
+**Key Steps:**
+- Loaded and explored `ethiopia_fi_unified_data.csv`.
+- Examined observations, events, and target records.
+- Reviewed `impact_links` for modeled relationships.
+- Added new observations, events, and impact_links where needed (with source documentation, confidence levels, and collection notes).
+
+**Outputs:**
+- Enriched dataset ready for analysis.
+- `data_enrichment_log.md` documenting all additions and changes.
 
 ---
 
-## Key Insights
-1. **Account ownership growth slowed post-2021** despite a surge in mobile money registrations.  
-2. **Digital payment usage grew faster than access**, indicating uptake is driven by active users rather than new account creation.  
-3. **Infrastructure leads inclusion with a lag**; improvements in 4G coverage and ATM density precede increased account ownership and usage.  
-4. **Gender gap remains persistent**, with women underrepresented in account ownership and mobile money usage.  
-5. **Data gaps limit rural and income-based analysis**, reducing the ability to fully capture disparities in financial inclusion.  
+### **Task 2: Exploratory Data Analysis (EDA)**
+**Objective:** Analyze patterns and factors influencing financial inclusion.
+
+**Key Steps:**
+- Summarized dataset by record_type, pillar, and source_type.
+- Visualized temporal coverage of indicators.
+- Assessed data quality and identified gaps.
+- Analyzed account ownership, mobile money adoption, and active usage trends.
+- Explored infrastructure and enabling factors.
+- Visualized events timeline and correlated events with indicator trends.
+- Investigated Ethiopia-specific dynamics (gender, urban-rural gap, slowdown 2021-2024).
+
+**Outputs:**
+- EDA notebook with visualizations.
+- Summary of key insights (≥5 insights with supporting evidence).
+- Data quality assessment documenting limitations.
 
 ---
 
-## Ethiopia-Specific Dynamics
-- P2P payments dominate usage, unlike in other countries where merchant payments are larger.  
-- Mobile money-only users are rare (~0.5%).  
-- Bank accounts are generally accessible, but credit penetration is very low.  
-- Policy and market events (e.g., Telebirr, M-Pesa) have significant short- and medium-term impacts.
+### **Task 3: Event Impact Modeling**
+**Objective:** Model how events (policies, product launches, infrastructure investments) affect indicators.
+
+**Key Steps:**
+- Built **Event-Indicator Impact Matrix** linking events to indicators.
+- Estimated effect magnitude, direction, and lag for each event.
+- Validated against historical data (e.g., Telebirr launch impact on mobile money accounts).
+- Refined estimates using comparable country evidence where data was insufficient.
+- Documented assumptions, methodology, and uncertainties.
+
+**Outputs:**
+- Impact modeling notebook.
+- Event-indicator association matrix (table or heatmap).
+- Documentation of methodology, sources, validation, and assumptions.
 
 ---
 
-## Next Steps
-- Use insights to inform **impact modeling** in Task 3  
-- Address sparse indicators by integrating additional data sources  
-- Explore hypothesis testing for event-to-indicator relationships using impact_links
+### **Task 4: Forecasting Access and Usage**
+**Objective:** Forecast Account Ownership and Digital Payment Usage for 2025-2027.
+
+**Key Steps:**
+- Defined targets:
+  - Account Ownership (% of adults with financial accounts)
+  - Digital Payment Usage (% of adults using digital payments)
+- Selected forecasting approaches:
+  - Trend regression (linear/log)
+  - Event-augmented model (trend + expected event impacts)
+  - Scenario analysis (Base, Optimistic, Pessimistic)
+- Generated forecasts with confidence intervals.
+- Produced visualizations and scenario comparisons.
+- Interpreted results and identified key uncertainties and impactful events.
+
+**Outputs:**
+- Forecasting notebook.
+- Forecast tables with confidence intervals.
+- Scenario visualizations and written interpretation.
 
 ---
 
-## References
-- `ethiopia_fi_unified_data.csv`  
-- `reference_codes.csv`  
-- Additional Data Points Guide (Sheets A–D)  
-- Findex surveys, operator reports, regulator data
+### **Task 5: Dashboard Development**
+**Objective:** Create an interactive dashboard for stakeholders to explore data, event impacts, and forecasts.
+
+**Key Features:**
+- **Overview Page:** Key metrics, P2P/ATM ratio, growth highlights.
+- **Trends Page:** Interactive time series plots, date range selector, channel comparison.
+- **Forecasts Page:** Forecast visualizations with scenario selection.
+- **Inclusion Projections Page:** Progress toward 60% account ownership target.
+
+**Technical Details:**
+- Built with **Streamlit**.
+- Includes ≥4 interactive visualizations.
+- Provides data download functionality.
+- Clear labels, explanations, and scenario selection.
+
+**Live Dashboard Link:** [Open Dashboard](https://ethiopia-financial-inclusion-forecast-hclh5tkoehvcacprkdfgmy.streamlit.app/)
+
+---
+
+## **Installation & Setup (Local)**
+
+1. Clone the repository:
+
+```bash
+git clone <YOUR_REPO_LINK>
+cd ethiopia-fi-forecast
+Create and activate a virtual environment:
+
+Windows:
+
+bash
+Copy code
+python -m venv venv
+venv\Scripts\activate
+Mac/Linux:
+
+bash
+Copy code
+python -m venv venv
+source venv/bin/activate
+Install dependencies:
+
+bash
+Copy code
+pip install -r requirements.txt
+Running the Dashboard Locally
+Ensure CSV files are present in the repo:
+
+observations.csv – Historical data
+
+events.csv – Event-impact data
+
+forecasts.csv – Forecasted values from Task 4
+
+Run Streamlit:
+
+bash
+Copy code
+streamlit run app.py
+Open the local URL in your browser to view the dashboard.
+
+Project Outputs
+Enriched dataset and impact links.
+
+Event-Indicator Impact Matrix.
+
+Forecast tables for 2025-2027 with scenario analysis.
+
+Scenario visualizations (Base, Optimistic, Pessimistic).
+
+Interactive Streamlit dashboard.
+
+**Key Insights**
+- Account ownership shows consistent growth in Ethiopia.
+
+- Mobile money adoption surged after key events (Telebirr, M-Pesa, Safaricom entry).
+
+- Active usage rates remain low despite high account registration.
+
+- Infrastructure, policies, and regulatory changes play major roles in inclusion.
+
+- Scenario analysis highlights potential risks and opportunities for the next three years.
+
+
 
